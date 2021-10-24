@@ -1,0 +1,26 @@
+{
+    "manifest_version": 2,
+    "name": "Video Download",
+    "version": "0.8.0",
+    "description": "A simple download video from website",
+    "homepage_url": "https://github.com/vanbujhm/WebExtension-video-download",
+    "icons": {
+        "48": "icons/video-download.png",
+        "96": "icons/video-download@2x.png"
+    },
+    "permissions": [
+		"<all_urls>",
+        "tabs",
+		"downloads"
+    ],
+    "browser_action": {
+        "default_icon": {
+            "16": "icons/video-download-icon-16.png",
+            "32": "icons/video-download-icon-32.png"
+        },
+        "default_title": "Video Download"
+    },
+    "background": {
+        "scripts": ["background.js"]
+    }
+}
