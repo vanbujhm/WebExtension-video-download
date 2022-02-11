@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Video Download",
-    "version": "0.8.0",
+    "version": "0.8.1",
     "description": "A simple download video from website",
     "homepage_url": "https://github.com/vanbujhm/WebExtension-video-download",
     "icons": {

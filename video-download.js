@@ -1,10 +1,28 @@
 function searchVideo(videoId){
-	let flashvars = window.wrappedJSObject['flashvars_' + videoId];
-	let qualityItems = window.wrappedJSObject['qualityItems_' + videoId];
+	//console.log('videoId: ' + videoId);
+
+	var flashvars = window.wrappedJSObject['flashvars_' + videoId];
+	var qualityItems = window.wrappedJSObject['qualityItems_' + videoId];
 	let video240 = false;
 	let video480 = false;
 	let video720 = false;
 	let video1080 = false;
+
+	if(typeof qualityItems === 'undefined' && typeof flashvars === 'undefined'){
+		let videoShow = window.wrappedJSObject['VIDEO_SHOW'];
+		if(typeof videoShow !== 'undefined'){
+			videoId = videoShow.playerId.replace(/playerDiv_/gi, '');
+			console.log('new videoId: ' + videoId);
+
+			flashvars = window.wrappedJSObject['flashvars_' + videoId];
+			qualityItems = window.wrappedJSObject['qualityItems_' + videoId];
+		}
+	}
+
+	//console.log('flashvars_' + videoId);
+	//console.log(flashvars);
+	//console.log('qualityItems_' + videoId);
+	//console.log(qualityItems);
 
 	if(typeof qualityItems !== 'undefined'){
 		for(var i = 0, len = qualityItems.length; i < len; i++){
@@ -77,6 +95,7 @@ function searchVideo(videoId){
 			}
 		}
 	}
+
 	return false;
 }
 
@@ -93,9 +112,16 @@ var player = document.getElementById('player');
 if(player === null){
 	player = document.getElementById('videoShow');
 }
+
 if(player !== null){
+	//console.log('player find!');
+	//console.log(player);
 	flashvarsString = player.dataset.videoId;
+	//console.log(flashvarsString);
 	video = searchVideo(flashvarsString);
+}
+else{
+	//console.log('player not found!');
 }
 
 if(video === false){
